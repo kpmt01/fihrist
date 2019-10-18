@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Fihrist</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{{ path('homepage') }}">Anasayfa <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{{ path('mail_template') }}">Mail Şablonları</a>
+            </div>
+            <div class="navbar-nav align-items-center">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a class="nav-item nav-link" href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('assets/jQuery/jquery-3.4.1.min.js') }}"></script>
+        <script src="{{ asset('assets/bootstrap/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    </body>
+</html>

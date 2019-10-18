@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add New Address{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+
+        {{ form_start(form, {'attr': {'id': 'validation'}}) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
