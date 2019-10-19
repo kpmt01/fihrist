@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse justify-content-between">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="{{ path('homepage') }}">Anasayfa <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="{{ path('mail_template') }}">Mail Şablonları</a>
+                <a class="nav-item nav-link" href="{# path('mail_template') #}">Mail Şablonları</a>
             </div>
             <div class="navbar-nav align-items-center">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
